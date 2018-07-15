@@ -1,0 +1,73 @@
+command /gmc [<player>]:
+    permission: server.gamemode.creative
+    permission message: "No Permission."
+    usage: "/gmc [player]"
+    trigger:
+        if %arg 1% is set:
+            player has permission "server.gamemode.creative.others"
+            execute console command "/minecraft:gamemode 1 %arg 1%"
+        if %arg 1% is not set:
+            execute console command "/minecraft:gamemode 1 %player%"
+            
+command /gms [<player>]:
+    permission: server.gamemode.survival
+    permission message: "No Permission."
+    usage: "/gms [player]"
+    trigger:
+        if %arg 1% is set:
+            player has permission "server.gamemode.survival.others"
+            execute console command "/minecraft:gamemode 0 %arg 1%"
+        if %arg 1% is not set:
+            execute console command "/minecraft:gamemode 0 %player%"
+            
+ command /gma [<player>]:
+    permission: server.gamemode.adventure
+    permission message: "No Permission."
+    usage: "/gma [player]"
+    trigger:
+        if %arg 1% is set:
+            player has permission "server.gamemode.adventure.others"
+            execute console command "/minecraft:gamemode 2 %arg 1%"
+        if %arg 1% is not set:
+            execute console command "/minecraft:gamemode 2 %player%"
+           
+command /gmsp [<player>]:
+    permission: server.gamemode.creative
+    permission message: "No Permission."
+    usage: "/gmsp [player]"
+    trigger:
+        if %arg 1% is set:
+            player has permission "server.gamemode.spectator.others"
+            execute console command "/minecraft:gamemode 3 %arg 1%"
+        if %arg 1% is not set:
+            execute console command "/minecraft:gamemode 3 %player%"
+            
+command /gm [<player>]:
+    usage: "/gm [player]"
+    trigger:
+        if %arg 1% is set:
+            if {%arg 1%.gm} is "survival":
+                player has permission "server.gamemode.creative.others"
+                execute console command "/minecraft:gamemode 1 %arg 1%"
+            else:
+                player has permission "server.gamemode.survival.others"
+                execute console command "/minecraft:gamemode 0 %arg 1%"
+        if %arg 1% is not set:
+            if {%player%.gm} is "survival":
+                player has permission "server.gamemode.creative"
+                execute console command "/minecraft:gamemode 1 %player%"
+            else:
+                player has permission "server.gamemode.survival"
+                execute console command "/minecraft:gamemode 0 %player%"
+
+on gamemode change to "survival":
+    set {%player%.gm} to "survival"
+
+on gamemode change to "creative":
+    set {%player%.gm} to "creative"
+
+on gamemode change to "adventure":
+    set {%player%.gm} to "adventure"
+
+on gamemode change to "spectator":
+    set {%player%.gm} to "spectator"
