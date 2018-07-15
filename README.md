@@ -1,5 +1,6 @@
 # skEssentials
-The skript, that changes minecraft, forever.
+So you don't gotta mess with a billion plugins.
+Comes in modules! so if u got a skript or plugin to manage something, it won't conflict.
 
 
 If you see any issues, please fork and fix, or create a ISSUE in the ISSUES section.
